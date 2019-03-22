@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="HW17" basedir="." default="run">
+<target name="delete_old">
+<delete dir="bin"/>
+</target>
+<target name="init" depends="delete_old">
+<mkdir dir="bin"/>
+</target>
+<property environment="env"/>
+<path id="classpath">
+<pathelement location="bin"/>
+</path>
+<target name="compile" depends="init">
+<javac srcdir="src" destdir="bin" includeantruntime="false"/>
+</target>
+<target name="run" depends="compile">
+<java classname="edu.umb.cs.cs681.HW17.AdmissionControl" failonerror="true" fork="yes">
+<classpath refid="classpath"/>
+</java>
+</target>
+</project>
