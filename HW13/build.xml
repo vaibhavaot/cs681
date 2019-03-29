@@ -1,0 +1,13 @@
+<?xml version="1.0"?>    
+<project  default="run" name="HW13" > 
+	 <target name="run" depends="compile"> 
+	 		<java classname="edu.umb.cs.cs681.HW13.MCTest">
+	 			
+	 			<classpath path="bin"/>
+	 		</java>
+	 	</target>
+	<target name="compile">
+		 <javac srcdir="./src" destdir="bin" includeantruntime="false"/>
+	</target>
+  
+</project>  
