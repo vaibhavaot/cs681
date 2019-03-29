@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="HW18" name="HW18">
+	<property environment="env" />
+
+	<path id="HW18.classpath">
+		<pathelement location="bin" />
+	</path>
+
+	<target name="init" depends="clean">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+
+	<target depends="init" name="build">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" destdir="bin" includeantruntime="false">
+			<src path="src" />
+			<classpath refid="HW18.classpath" />
+		</javac>
+		<echo message="Compiled Successfully..." />
+	</target>
+
+	<target name="HW18" depends="build">
+		<java classname="edu.umb.cs.cs681.HW18.ExampleWithSolution1" failonerror="true" fork="yes">
+			<classpath refid="HW18.classpath" />
+		</java>
+		<java classname="edu.umb.cs.cs681.HW18.ExampleWithSolution2" failonerror="true" fork="yes">
+			<classpath refid="HW18.classpath" />
+		</java>
+	</target>
+
+</project>

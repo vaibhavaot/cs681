@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project basedir="." default="HW20" name="HW20">
+	<property environment="env" />
+
+	<path id="HW20.classpath">
+		<pathelement location="bin" />
+	</path>
+
+	<target name="init" depends="clean">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+
+	<target depends="init" name="build">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" destdir="bin" includeantruntime="false">
+			<src path="src" />
+			<classpath refid="HW20.classpath" />
+		</javac>
+		<echo message="Compiled Successfully..." />
+	</target>
+
+	<target name="HW20" depends="build">
+		<java classname="edu.umb.cs.cs681.HW20.Example" failonerror="true" fork="yes">
+			<classpath refid="HW20.classpath" />
+		</java>
+
+	</target>
+
+</project>
